@@ -10,3 +10,6 @@
 * [防抖节流](pages/page7.md)
 * [柯里化](pages/page8.md)
 * [变量及变量函数提升](pages/page9.md)
+* [原型和原型链](pages/page10.md)
+* [MVVM架构](pages/page11.md)
+* [Vue3.0](pages/page12.md)

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>URL解析过程 · GitBook</title>
+        <title>Vue3.0 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="page5.html" />
     
-    
-    <link rel="prev" href="page3.html" />
+    <link rel="prev" href="page11.html" />
     
 
     </head>
@@ -141,7 +139,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="page4.html">
+        <li class="chapter " data-level="1.5" data-path="page4.html">
             
                 <a href="page4.html">
             
@@ -245,7 +243,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="page12.html">
+        <li class="chapter active" data-level="1.13" data-path="page12.html">
             
                 <a href="page12.html">
             
@@ -288,7 +286,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >URL解析过程</a>
+        <a href=".." >Vue3.0</a>
     </h1>
 </div>
 
@@ -303,23 +301,79 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="url&#x89E3;&#x6790;&#x8FC7;&#x7A0B;">URL&#x89E3;&#x6790;&#x8FC7;&#x7A0B;</h3>
-<p>&#x5728;&#x7528;&#x6237;&#x8F93;&#x5165; URL&#xFF0C;&#x6309;&#x4E0B;&#x56DE;&#x8F66;&#x4E4B;&#x540E;&#xFF0C;&#x8D70;&#x8FC7;&#x7684;&#x6B65;&#x9AA4;&#xFF1A;  </p>
+                                <h3 id="vue30">Vue3.0</h3>
+<p>&#x5BF9;&#x6BD4;Vue2&#xFF0C;&#x6027;&#x80FD;&#x63D0;&#x5347;&#x5728;&#x54EA;&#x91CC;&#xFF1F;</p>
 <ol>
-<li><strong>DNS &#x89E3;&#x6790;</strong></li>
-<li><strong>TCP &#x8FDE;&#x63A5;</strong></li>
-<li><strong>&#x53D1;&#x9001; HTTP &#x8BF7;&#x6C42;</strong></li>
-<li><strong>&#x670D;&#x52A1;&#x5668;&#x54CD;&#x5E94;</strong></li>
-<li><strong>&#x6D4F;&#x89C8;&#x5668;&#x89E3;&#x6790;&#x6E32;&#x67D3;&#x9875;&#x9762;</strong>  </li>
+<li>diff&#x7B97;&#x6CD5;&#x4F18;&#x5316;&#xFF0C;Vue2&#x7684;&#x65F6;&#x5019;&#x6BCF;&#x6B21;&#x6570;&#x636E;&#x66F4;&#x65B0;&#xFF0C;&#x5B83;&#x90FD;&#x4F1A;&#x9010;&#x4E2A;&#x6BD4;&#x5BF9;&#x6BCF;&#x4E2A;&#x865A;&#x62DF;dom&#x6811;&#x8282;&#x70B9;&#xFF0C;&#x4E00;&#x6837;&#x7684;&#x4E0D;&#x66F4;&#x6539;&#xFF0C;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x65B0;&#x7684;&#x66FF;&#x6362;&#x65E7;&#x7684;&#xFF0C;&#x800C;Vue3&#x5219;&#x4F1A;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x5BF9;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x6539;&#x53D8;&#x7684;&#x8282;&#x70B9;&#x6253;&#x4E0A;&#x6807;&#x8BB0;&#xFF0C;&#x5728;diff&#x6BD4;&#x5BF9;DOM&#x6811;&#x7684;&#x65F6;&#x5019;&#x8DF3;&#x8FC7;&#x6709;&#x6807;&#x8BB0;&#x7684;&#x8282;&#x70B9;</li>
+<li>proxy&#x4EE3;&#x66FF;defineProperty ,v2&#x4E2D;&#x4F7F;&#x7528;&#x7684;defineProperty&#x5BF9;&#x6570;&#x7EC4;&#x548C;&#x5BF9;&#x8C61;&#x7684;&#x6539;&#x53D8;&#x4E0D;&#x80FD;&#x76D1;&#x542C;&#x5230;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;Vue.set&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x8D4B;&#x503C;&#xFF0C;&#x800C;v3&#x7684;proxy&#x5219;&#x80FD;&#x591F;&#x76D1;&#x542C;&#x5230;&#x5BF9;&#x8C61;&#x548C;&#x6570;&#x7EC4;&#x7684;&#x53D8;&#x5316;</li>
+<li>&#x5305;&#x66F4;&#x5C0F;&#xFF0C;&#x4F7F;&#x7528;Vue&#x63A8;&#x8350;&#x7684;vite&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x66F4;&#x5FEB;&#x7684;&#x6253;&#x5305;&#x901F;&#x5EA6;&#x53CA;&#x4F18;&#x5316;</li>
+<li>v2&#x76D1;&#x542C;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x6DF1;&#x5EA6;&#x76D1;&#x542C;&#xFF0C;v3&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x4E86;</li>
 </ol>
-<p>&#x5177;&#x4F53;&#x6D41;&#x7A0B;&#x662F;&#xFF1A;</p>
-<ol>
-<li>&#x7528;&#x6237;&#x5728;&#x5730;&#x5740;&#x680F;&#x8F93;&#x5165;&#x5730;&#x5740;&#x4EE5;&#x540E;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x8BBF;&#x95EE;&#x5BA2;&#x6237;&#x7AEF;&#x7684;DNS&#x7F13;&#x5B58;&#xFF08;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58; -&gt; &#x7CFB;&#x7EDF;&#x7F13;&#x5B58; -&gt; &#x8DEF;&#x7531;&#x5668;&#x7F13;&#x5B58;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x627E;&#x5230;&#x6B64;&#x7F51;&#x5740;&#x7684;DNS&#x89E3;&#x6790;&#x8BB0;&#x5F55;&#xFF0C;&#x8FD4;&#x56DE;&#x8BE5;IP&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x8BE5;&#x5730;&#x5740;&#x89E3;&#x6790;&#x8BB0;&#x5F55;&#xFF0C;&#x5219;&#x5411;DNS&#x6839;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x57DF;&#x540D;&#x670D;&#x52A1;&#x5668;&#x7B49;&#x8BE2;&#x95EE;&#xFF0C;&#x6709;&#x5219;&#x8FD4;&#x56DE;&#x5176;IP&#x5730;&#x5740;</li>
-<li>TCP&#x8FDE;&#x63A5;&#xFF0C;3&#x6B21;&#x63E1;&#x624B;&#xFF0C;&#x5EFA;&#x7ACB;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x8FDE;&#x63A5; -&gt; &#x6570;&#x636E;&#x4F20;&#x8F93; -&gt; &#x56DB;&#x6B21;&#x63E1;&#x624B;&#xFF0C;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;</li>
-<li>&#x53D1;&#x9001;HTTP&#x8BF7;&#x6C42;&#xFF0C;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;</li>
-<li>&#x670D;&#x52A1;&#x5668;&#x54CD;&#x5E94;&#x540E;&#x53D1;&#x56DE;&#x76F8;&#x5E94;&#x8D44;&#x6E90;</li>
-<li>&#x9875;&#x9762;&#x62FF;&#x5230;&#x8D44;&#x6E90;&#x540E;&#x5F00;&#x59CB;&#x89E3;&#x6790;&#x6E32;&#x67D3;</li>
-</ol>
+<blockquote>
+<p>&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x770B;&#x533A;&#x522B;&#xFF1A;  </p>
+</blockquote>
+<p>html:</p>
+<pre><code>    &lt;div id=&quot;app&quot;&gt;
+        &lt;ul&gt;
+            &lt;li v-for=&quot;(item, index) in arr&quot; @click=&quot;change(index)&quot;&gt;
+                {{item}}
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+</code></pre><p>js:</p>
+<pre><code>// Vue2.0 (defineProprety)
+var app = new Vue({
+    el: &apos;#app&apos;,
+    data: {
+        arr:[&apos;aa&apos;,&apos;bb&apos;,&apos;cc&apos;],
+    },
+    methods:{
+        change(index) {
+            //&#x4F1A;&#x53D1;&#x73B0;&#x89C6;&#x56FE;&#x4E0A;&#x7684;&#x503C;&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#xFF0C;&#x4F46;&#x662F;&#x6570;&#x636E;&#x786E;&#x5B9E;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x53D8;&#x5316;
+            // this.arr[index] = &apos;haha&apos;
+
+            //&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x62D3;&#x5C55;&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x65B0;&#x8D4B;&#x503C;&#x6216;&#x8005;&#x4F7F;&#x7528;Vue.set&#x91CD;&#x65B0;&#x8D4B;&#x503C;&#x89C6;&#x56FE;&#x624D;&#x4F1A;&#x6539;&#x53D8;
+            this.arr = [...this.arr]
+            //&#x6216;&#x8005;
+            // Vue.set(this.arr,index,&apos;haha&apos;)
+        }
+    }
+})
+---------------------------------------------------------
+// Vue3.0 (Proxy)
+const myApp = {
+    setup (){
+        const arr = Vue.reactive([
+            &apos;aa&apos;,&apos;bb&apos;,&apos;cc&apos;
+        ])
+        function change(index){
+            //&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x66F4;&#x65B0;&#x89C6;&#x56FE;&#xFF01;&#x8FD9;&#x5728;vue2&#x4E2D;&#x662F;&#x4E0D;&#x884C;&#x7684;
+            arr[index] = &apos;haha&apos;
+        };
+        return {arr, change};
+    },
+}
+Vue.createApp(myApp).mount(&apos;#app&apos;)
+</code></pre><blockquote>
+<p>Vue3&#x53D8;&#x91CF;&#x58F0;&#x660E;</p>
+</blockquote>
+<pre><code>const myApp = {
+    setup (){
+        var msg = &apos;&#x54C8;&#x54C8;&#x54C8;&apos;;
+        function changeMsg(){
+            msg = &apos;&#x563F;&#x563F;&#x563F;&apos; // wtf? &#x89C6;&#x56FE;&#x6CA1;&#x66F4;&#x65B0;&#xFF01;
+        }
+        //&#x662F;&#x7684;&#xFF0C;vue3&#x4E2D;&#x53D8;&#x91CF;&#x9700;&#x8981;&#x4F7F;&#x7528; ref,reactive&#x8FDB;&#x884C;&#x58F0;&#x660E;&#x624D;&#x80FD;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#xFF0C;&#x4EE5;&#x4E0A;&#x4E0D;&#x53EF;&#x4EE5;
+        //&#x6B63;&#x786E;&#x58F0;&#x660E;&#x5982;&#x4E0B;
+        const msg = ref(&apos;&#x54C8;&#x54C8;&#x54C8;&apos;);
+        function changeMsg(){
+            msg.value = &apos;&#x563F;&#x563F;&#x563F;&apos; // &#x5B9E;&#x65F6;&#x66F4;&#x65B0;&#x4E86;&#xFF01;&#x751A;&#x81F3;&#x4F7F;&#x7528;&#x7684;const&#x58F0;&#x660E;&#x7684;&#x4E5F;&#x6539;&#x53D8;&#x4E86;msg&#x7684;&#x503C;&#xFF0C;&#x8FD9;&#x8FD8;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x5565;
+        }
+        return {msg, changeMsg};
+    },
+}
+Vue.createApp(myApp).mount(&apos;#app&apos;)
+</code></pre><p><strong>vue3&#x4E2D;&#x53D8;&#x91CF;&#x9700;&#x8981;&#x4F7F;&#x7528; ref,reactive&#x8FDB;&#x884C;&#x58F0;&#x660E;&#x624D;&#x80FD;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;,&#x4E00;&#x822C;ref&#x7528;&#x4E8E;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#xFF0C;reactive&#x7528;&#x4E8E;&#x5BF9;&#x8C61;&#x6570;&#x7EC4;&#x58F0;&#x660E;&#xFF0C;&#x5BF9;&#x8C61;&#x53CA;&#x6570;&#x7EC4;&#x4F7F;&#x7528;ref&#x58F0;&#x660E;&#x540C;&#x6837;&#x4E0D;&#x53EF;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;</strong></p>
 
                                 
                                 </section>
@@ -347,14 +401,10 @@
 
             
                 
-                <a href="page3.html" class="navigation navigation-prev " aria-label="Previous page: 重绘，回流">
+                <a href="page11.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: MVVM架构">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="page5.html" class="navigation navigation-next " aria-label="Next page: 性能优化">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -363,7 +413,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"URL解析过程","level":"1.5","depth":1,"next":{"title":"性能优化","level":"1.6","depth":1,"path":"pages/page5.md","ref":"pages/page5.md","articles":[]},"previous":{"title":"重绘，回流","level":"1.4","depth":1,"path":"pages/page3.md","ref":"pages/page3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/page4.md","mtime":"2020-11-06T06:44:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-24T06:43:51.272Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Vue3.0","level":"1.13","depth":1,"previous":{"title":"MVVM架构","level":"1.12","depth":1,"path":"pages/page11.md","ref":"pages/page11.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/page12.md","mtime":"2020-11-24T07:05:53.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-24T06:43:51.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

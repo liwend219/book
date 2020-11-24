@@ -219,6 +219,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.11" data-path="page10.html">
+            
+                <a href="page10.html">
+            
+                    
+                    原型和原型链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="page11.html">
+            
+                <a href="page11.html">
+            
+                    
+                    MVVM架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="page12.html">
+            
+                <a href="page12.html">
+            
+                    
+                    Vue3.0
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -266,25 +305,92 @@
                                 
                                 <h3 id="this-&#xFF08;es5&#xFF09;">this &#xFF08;ES5&#xFF09;</h3>
 <p>&#x901A;&#x5E38;&#x610F;&#x4E49;&#x4E0A;&#xFF0C;&#x4EBA;&#x4EEC;&#x628A;this &#x7406;&#x89E3;&#x6210;&#x6307;&#x5411;&#x51FD;&#x6570;&#x81EA;&#x8EAB;  </p>
-<p>&#x770B;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#x7A0B;&#x5E8F;</p>
-<pre><code>    var name = &apos;&#x5C0F;&#x660E;&apos;;
-    function getName() {
-        var name = &apos;&#x5C0F;&#x674E;&apos;;
-        console.log(this.name) // &#x5C0F;&#x660E;
-    }
-    getName();
-
-    -------
-
-    var name = &apos;&#x5C0F;&#x660E;&apos;;
-    var obj = {
-        name:&apos;&#x5C0F;&#x674E;&apos;,
-        getName:function () {
-            console.log(this.name) // &#x5C0F;&#x674E;
-        }
-    }
-    obj.getName()
-</code></pre><p>&#x7B2C;&#x4E00;&#x4E2A;&#x5728;&#x5916;&#x90E8;&#x4F5C;&#x7528;&#x57DF;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5; <code>name</code> &#x662F;&#x5C0F;&#x660E;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x4F7F;&#x7528; <code>obj</code> &#x8FDB;&#x884C;&#x8C03;&#x7528;&#xFF0C;&#x4ED6;&#x7684;this&#x5373;&#x6307;&#x5411; <code>obj</code> &#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x7684; <code>name</code> &#x662F;&#x5C0F;&#x674E;</p>
+<p>this&#x7ED1;&#x5B9A;&#x89C4;&#x5219;  </p>
+<ol>
+<li>&#x9ED8;&#x8BA4;&#x7ED1;&#x5B9A;</li>
+<li>&#x9690;&#x5F0F;&#x7ED1;&#x5B9A;</li>
+<li>&#x786C;&#x7ED1;&#x5B9A;</li>
+<li>new&#x7ED1;&#x5B9A;</li>
+</ol>
+<h4 id="&#x9ED8;&#x8BA4;&#x7ED1;&#x5B9A;">&#x9ED8;&#x8BA4;&#x7ED1;&#x5B9A;</h4>
+<blockquote>
+<p>&#x9ED8;&#x8BA4;&#x7ED1;&#x5B9A;&#xFF0C;&#x5728;&#x4E0D;&#x80FD;&#x5E94;&#x7528;&#x5176;&#x5B83;&#x7ED1;&#x5B9A;&#x89C4;&#x5219;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x89C4;&#x5219;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x72EC;&#x7ACB;&#x51FD;&#x6570;&#x8C03;&#x7528;  </p>
+</blockquote>
+<pre><code>function sayHi(){
+    console.log(&apos;Hello,&apos;, this.name);
+}
+var name = &apos;YvetteLau&apos;;
+sayHi();
+</code></pre><h4 id="&#x9690;&#x5F0F;&#x7ED1;&#x5B9A;">&#x9690;&#x5F0F;&#x7ED1;&#x5B9A;</h4>
+<blockquote>
+<p>&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x662F;&#x5728;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x4E0A;&#x89E6;&#x53D1;&#x7684;&#xFF0C;&#x5373;&#x8C03;&#x7528;&#x4F4D;&#x7F6E;&#x4E0A;&#x5B58;&#x5728;&#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;&#x3002;&#x5178;&#x578B;&#x7684;&#x5F62;&#x5F0F;&#x4E3A; XXX.fun().&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;  </p>
+</blockquote>
+<pre><code>function sayHi(){
+    console.log(&apos;Hello,&apos;, this.name); // Hello,YvetteLau.
+}
+var person = {
+    name: &apos;YvetteLau&apos;,
+    sayHi: sayHi
+}
+var name = &apos;Wiliam&apos;;
+person.sayHi();
+</code></pre><blockquote>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x94FE;&#x4E2D;&#x53EA;&#x6709;&#x6700;&#x540E;&#x4E00;&#x5C42;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x8C03;&#x7528;&#x4F4D;&#x7F6E;  </p>
+</blockquote>
+<pre><code>function sayHi(){
+    console.log(&apos;Hello,&apos;, this.name);
+}
+//this &#x6307;&#x5411; person2
+var person2 = {
+    name: &apos;Christina&apos;,
+    sayHi: sayHi
+}
+var person1 = {
+    name: &apos;YvetteLau&apos;,
+    friend: person2
+}
+person1.friend.sayHi();
+</code></pre><blockquote>
+<p>&#x9690;&#x5F0F;&#x7ED1;&#x5B9A;&#x6709;&#x4E00;&#x4E2A;&#x5927;&#x9677;&#x9631;&#xFF0C;&#x7ED1;&#x5B9A;&#x5F88;&#x5BB9;&#x6613;&#x4E22;&#x5931;  </p>
+</blockquote>
+<pre><code>//Hi&#x76F4;&#x63A5;&#x6307;&#x5411;&#x4E86;sayHi&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8DDF;person&#x6CA1;&#x6709;&#x534A;&#x6BDB;&#x94B1;&#x7684;&#x5173;&#x7CFB;
+function sayHi(){
+    console.log(&apos;Hello,&apos;, this.name); Hello,Wiliam.
+}
+var person = {
+    name: &apos;YvetteLau&apos;,
+    sayHi: sayHi
+}
+var name = &apos;Wiliam&apos;;
+var Hi = person.sayHi;
+Hi();
+</code></pre><h4 id="&#x663E;&#x5F0F;&#x7ED1;&#x5B9A;">&#x663E;&#x5F0F;&#x7ED1;&#x5B9A;</h4>
+<blockquote>
+<p>&#x5C31;&#x662F;&#x901A;&#x8FC7;call,apply,bind&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x663E;&#x5F0F;&#x7684;&#x6307;&#x5B9A;this&#x6240;&#x6307;&#x5411;&#x7684;&#x5BF9;&#x8C61;  </p>
+</blockquote>
+<pre><code>function sayHi(){
+    console.log(&apos;Hello,&apos;, this.name);
+}
+var person = {
+    name: &apos;YvetteLau&apos;,
+    sayHi: sayHi
+}
+var name = &apos;Wiliam&apos;;
+var Hi = person.sayHi;
+Hi.call(person); //Hi.apply(person) //Hello,YvetteLau
+</code></pre><h4 id="new-&#x7ED1;&#x5B9A;">new &#x7ED1;&#x5B9A;</h4>
+<blockquote>
+<p>&#x5C06;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x8D4B;&#x503C;&#x7ED9;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x5373;this&#x6307;&#x5411;&#x8FD9;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;
+```
+    function sayHi(name){
+        this.name = name;</p>
+</blockquote>
+<pre><code>}
+var Hi = new sayHi(&apos;Yevtte&apos;);
+console.log(&apos;Hello,&apos;, Hi.name);
+</code></pre><p>```</p>
+<h4 id="&#x7ED1;&#x5B9A;&#x89C4;&#x5219;&#x4F18;&#x5148;&#x7EA7;">&#x7ED1;&#x5B9A;&#x89C4;&#x5219;&#x4F18;&#x5148;&#x7EA7;</h4>
+<p>new&#x7ED1;&#x5B9A; &gt; &#x663E;&#x5F0F;&#x7ED1;&#x5B9A; &gt; &#x9690;&#x5F0F;&#x7ED1;&#x5B9A; &gt; &#x9ED8;&#x8BA4;&#x7ED1;&#x5B9A;</p>
 <h3 id="&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x4E0B;&#x7684;this">&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x4E0B;&#x7684;this</h3>
 <p>&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x662F;&#x6CA1;&#x6709;this&#x7684;&#xFF0C;&#x4ED6;&#x7684;this&#x6765;&#x81EA;&#x4E8E;&#x5B83;&#x4F5C;&#x7528;&#x57DF;&#x4E0A;&#x4E00;&#x5C42;&#x7684;this</p>
 
@@ -330,7 +436,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"this","level":"1.3","depth":1,"next":{"title":"重绘，回流","level":"1.4","depth":1,"path":"pages/page3.md","ref":"pages/page3.md","articles":[]},"previous":{"title":"闭包","level":"1.2","depth":1,"path":"pages/page1.md","ref":"pages/page1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/page2.md","mtime":"2020-11-05T09:41:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-09T06:53:06.260Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"this","level":"1.3","depth":1,"next":{"title":"重绘，回流","level":"1.4","depth":1,"path":"pages/page3.md","ref":"pages/page3.md","articles":[]},"previous":{"title":"闭包","level":"1.2","depth":1,"path":"pages/page1.md","ref":"pages/page1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/page2.md","mtime":"2020-11-18T07:37:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-24T06:43:51.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
