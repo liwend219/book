@@ -13,3 +13,5 @@
 * [原型和原型链](pages/page10.md)
 * [MVVM架构](pages/page11.md)
 * [Vue3.0](pages/page12.md)
+* [typeScript](pages/page13.md)
+* [内存机制及堆栈](pages/page14.md)

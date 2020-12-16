@@ -62,3 +62,5 @@ person.name  // undefiend
 
 实例查找原型用 `__proto__` , 函数查找用 `prototype`
 
+
+
