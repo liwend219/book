@@ -4,6 +4,7 @@
 - 堆（heap） 堆heap是动态分配的内存，大小不定也不会自动释放。
 
 > JavaScript 中的变量分为基本类型和引用类型。
+
 - 基本类型（Undefined、Null、Boolean、Number和String）
 基本类型在内存中占据空间小、大小固定 ，他们的值保存在栈(stack)空间，是按值来访问
 - 引用类型 （对象、数组、函数）
