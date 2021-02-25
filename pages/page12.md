@@ -1,14 +1,51 @@
 ### Vue3.0
 对比Vue2，性能提升在哪里？
 1. `diff`算法优化，`Vue2`的时候每次数据更新，需要比对的dom树可能里面是静态动态混在一起的，它要逐个比对每个虚拟dom树节点，一样的不更改，不一样的新的替换旧的，而Vue3则只会创建一次静态节点，diff比对的时候不会比对这些节点
-2. `proxy`代替`defineProperty` ,v2中使用的`defineProperty`对数组和对象的改变不能监听到，需要使用`Vue.set`进行重新赋值，而v3的`proxy`则能够监听到对象和数组的变化
-3. 包更小，使用Vue推荐的`vite`可以获取更快的打包速度及优化（开发时不需要预编译，直接利用了现代浏览器大都支持es6的特性，省去了预编译转换es5的步骤，视图更新极快）
-4. v2监听对象中的某个属性值，需要手动设置深度监听，v3也不需要了（proxy）
+2. `proxy`代替`defineProperty` ,v2中使用的`defineProperty`对数组和对象的后面新增的属性不能监听到，需要使用`Vue.set`进行重新赋值，而v3的`proxy`则能够监听到对象和数组的变化
+3. v2 中的 `defineProperty` 劫持数据的时候，防止死循环需要克隆所劫持的数据，对克隆的数据进行操作，v3中的`proxy`不需要，详情见下面注①
+4. v2 中对象的每一个属性都要使用`defineProperty`进行劫持，而 v3 中只需要监听整个对象，就能实现所有属性全部劫持
+5. 包更小，使用Vue推荐的`vite`可以获取更快的打包速度及优化（开发时不需要预编译，直接利用了现代浏览器大都支持es6的特性，省去了预编译转换es5的步骤，视图更新极快）
+6. v2监听对象中的某个属性值，需要手动设置深度监听，v3也不需要了（proxy）
 
 缺点在哪？
 1. `setup`组合api即是优点也是缺点，全部堆在一起（当然也可摘出来模块化）
 2. `ref`创建的变量，使用的时候需要加上`.value`,当然，这实际上是因为ref的底层是使用`reactive`进行包装的，包装成`proxy`的对象，既是对象，就是键值对的形式存在，于是就自动给你加上了`value`的键
 3. 由于使用了`proxy`，不支持任何IE浏览器，对于某些有IE用户的公司来说，用不了
+
+
+注① ：
+```
+// defineProperty
+let obj = {
+    name:''
+}
+let newObj = JSON.parse(JSON.stringify(obj));
+Object.defineProperty(obj,'name',{
+    get () {
+        // return this.name // error ,死循环，相当于又获取name，又进入到 get(),从而死循环
+        return newObj.name; // 只能返回克隆的，才能不陷入死循环
+    },
+    set (value) {
+        newObj.name = value
+    }
+})
+
+-----------------------
+// proxy
+let obj = {
+
+}
+obj = new Proxy(obj,{
+    get (target,prop) {
+        //这里的get就不用克隆对象了，直接操作target
+        return target[prop]
+    },
+    set ((target,prop,value) {
+        target[prop] = value
+    }
+})
+
+```
 
 > 看下面的代码看区别：  
 
